@@ -1,0 +1,58 @@
+/*Adding Font*/
+@font-face {
+    font-family: "Paul Grotesk Regular";
+    src: url("fonts/PaulGrotesk-Regular-Trail.otf");
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    background: transparent;
+    width: 100%;
+}
+
+.logo {
+    width: 25px;
+    height: 25px;
+}
+
+.title-logo{
+    display: flex;
+    gap: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+    font-family: "Paul Grotesk Regular";
+}
+
+nav a{
+    color: #FFFFFF;
+    opacity: 60%;
+    padding: 12px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    margin: 0px;
+}
+
+h1 {
+    
+}
+
+.main-wrapper {
+    padding: 30px
+}
+
+.home-cleaning-background {
+    background-image: url("images/clean-living-room.png");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
