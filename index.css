@@ -1,58 +1,228 @@
 /*Adding Font*/
 @font-face {
-    font-family: "Paul Grotesk Regular";
-    src: url("fonts/PaulGrotesk-Regular-Trail.otf");
+  font-family: "Paul Grotesk Regular";
+  src: url("fonts/PaulGrotesk-Regular-Trail.otf");
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("fonts/Fredoka.woff");
+}
+
+/*Keyframe Transformations On Page Load */
+@keyframes top-left-to-default {
+  0% {
+    position: absolute;
+    translate: -50% -300%;
+    opacity: 0%;
+  }
+
+  100% {
+    position: absolute;
+    translate: 0% 0%;
+    opacity: 100%;
+  }
+}
+
+@keyframes top-right-to-default {
+  0% {
+    position: absolute;
+    translate: 50% -300%;
+    opacity: 0%;
+    right: 100px;
+  }
+
+  100% {
+    position: absolute;
+    translate: 0% 0%;
+    opacity: 100%;
+    right: 100px;
+  }
+}
+
+@keyframes bottom-right-to-default {
+  0% {
+    position: absolute;
+    translate: 50% 300%;
+    opacity: 0%;
+  }
+
+  100% {
+    position: absolute;
+    translate: 0% 0%;
+    opacity: 100%;
+  }
+}
+
+@keyframes bottom-left-to-default {
+  0% {
+    position: absolute;
+    translate: -50% 100%;
+    opacity: 0%;
+  }
+
+  100% {
+    position: absolute;
+    translate: 0% 0%;
+    opacity: 100%;
+  }
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    background: transparent;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 36px;
 }
 
 .logo {
-    width: 25px;
-    height: 25px;
+  width: auto;
+  height: 100%;
 }
 
-.title-logo{
-    display: flex;
-    gap: 20px;
+.title-logo {
+  animation: 1s ease-out 0s 1 top-left-to-default;
+  animation-fill-mode: backwards;
+
+  display: flex;
+  gap: 20px;
+  height: inherit;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  font-family: "Fredoka";
+  padding-left: 40px;
 }
 
 nav {
-    display: flex;
-    gap: 35px;
-    font-family: "Paul Grotesk Regular";
+  animation: 1s ease-out 0.15s 1 top-right-to-default;
+  animation-fill-mode: backwards;
+
+  width: 600px;
+  right: 50px;
+  height: inherit;
+  position: relative;
+  display: absolute;
+  font-family: "Paul Grotesk Regular";
 }
 
-nav a{
-    color: #FFFFFF;
-    opacity: 60%;
-    padding: 12px;
-    font-size: 30px;
-    text-decoration: none;
+nav a {
+  position: absolute;
+  color: #ffffff;
+  opacity: 60%;
+  font-size: 30px;
+  text-decoration: none;
+  transition: opacity 400ms, font-size 400ms, translate 400ms;
+}
+
+nav a:hover {
+  opacity: 80%;
+  font-size: 35px;
+}
+
+#home {
+  right: 300px;
+}
+
+#about {
+  right: 160px;
+}
+
+#contact {
+  right: 0px;
+}
+
+#home:hover {
+  translate: 7px -3.5px;
+}
+
+#about:hover {
+  translate: 6px -3.5px;
+}
+
+#contact:hover {
+  translate: 9px -3.5px;
 }
 
 body {
-    height: 100vh;
-    margin: 0px;
+  height: 100vh;
+  margin: 0px;
+  overflow: hidden;
 }
 
 h1 {
-    
+  animation: 1s ease-out 0.7s 1 bottom-left-to-default;
+  animation-fill-mode: backwards;
+
+  color: white;
+  font-family: "Paul Grotesk Regular";
+  font-size: 7rem;
+  width: 45%;
+  margin: 0;
+}
+
+h2 {
+  color: white;
+  font-family: "Paul Grotesk Regular";
+  margin: 0;
+}
+
+.book-button {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
+  border: none;
+  background: rgb(0 0 0 / 40%);
+  border-radius: 1rem;
+  font-size: 2.5rem;
+  transition: background 400ms;
+  color: white;
+  font-family: "Paul Grotesk Regular";
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.book-button:hover {
+  cursor: pointer;
+  background: rgb(0 0 0 / 60%);
 }
 
 .main-wrapper {
-    padding: 30px
+  height: calc(100% - 100px);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 100px;
+  align-items: end;
 }
 
 .home-cleaning-background {
-    background-image: url("images/clean-living-room.png");
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("images/clean-living-room.png");
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.go-arrow {
+  width: auto;
+  height: 100%;
 }
