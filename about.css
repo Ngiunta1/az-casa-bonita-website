@@ -1,0 +1,61 @@
+/* Font Intialization */
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("fonts/Fredoka.woff");
+}
+
+/* ================== */
+
+/* Main Background Setup */
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.about-background{
+    background-image: url(images/about-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+}
+
+.main-wrapper {
+    padding: 50px;
+}
+
+/* ====================== */
+
+/* Header & Navigation Menu Setup */
+
+h2  {
+    color: white;
+    font-family: "Fredoka";
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.title-logo {
+    display: flex;
+    gap: 30px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+    text-decoration: none;
+}
+
+header {
+    justify-content: space-between;
+}
+
+/* ============================== */
