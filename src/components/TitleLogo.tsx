@@ -5,11 +5,11 @@ interface TitleLogoProps {
   logoSrc: string;
 }
 
-const TitleLogo = (props: TitleLogoProps) => {
+const TitleLogo = ({ title, logoSrc }: TitleLogoProps) => {
   return (
     <div className="flex gap-8">
-      <Title title={props.title} />
-      <img src={props.logoSrc} className="w-12" />
+      <Title title={title} />
+      <img src={logoSrc} className="w-12" />
     </div>
   );
 };

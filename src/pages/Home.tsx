@@ -5,9 +5,13 @@ import Button from "../components/Button";
 const Home = () => {
   return (
     <div className="flex flex-col h-full">
-      <div className="flex-1" />
+      <div className="flex-1 content-center" />
       <Tagline tagline="The Next Level of Clean for Your Home" />
-      <Button text="Book Now" backgroundColor="primary" />
+      <Button
+        text="Book Now"
+        backgroundColor="primary"
+        icon="src\assets\icons\go-arrow.png"
+      />
     </div>
   );
 };
