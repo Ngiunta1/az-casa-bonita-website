@@ -7,22 +7,18 @@ import MainWrapper from "./components/MainWrapper.tsx";
 import Header from "./components/Header.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
-
-const subPages = ["Home", "About", "Contact"];
-const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
-const title = "AZ Casa Bonita";
+import Layout from "./components/Layout.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <MainWrapper backgroundImageSrc="src/assets/images/clean-living-room.png">
-        <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-        <Routes>
+      <Routes>
+        <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </MainWrapper>
+        </Route>
+      </Routes>
     </BrowserRouter>
   </StrictMode>
 );
