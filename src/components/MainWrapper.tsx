@@ -13,7 +13,7 @@ const MainWrapper = ({ children, backgroundImageSrc }: MainWrapperProps) => {
           ? { backgroundImage: `url(${backgroundImageSrc})` }
           : undefined
       }
-      className={`flex flex-col px-24 py-18 bg-cover bg-center h-screen transition-all duration-400`}
+      className={`flex flex-col bg-cover bg-center h-screen transition-all duration-400 px-8 py-6 lg:py-18 lg:px-24`}
     >
       {children}
     </div>

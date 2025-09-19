@@ -10,7 +10,7 @@ interface HeaderProps {
 
 const Header = ({ subPages, logoSrc, title }: HeaderProps) => {
   return (
-    <header className="flex items-baseline justify-between w-full">
+    <header className="flex flex-col items-center w-full justify-center gap-15 lg:justify-between lg:flex-row lg:items-baseline">
       {/* Logo + Title */}
       <FadeInAnimation delay={0}>
         <TitleLogo title={title} logoSrc={logoSrc} />

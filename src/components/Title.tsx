@@ -3,7 +3,11 @@ interface TitleProps {
 }
 
 const Title = (props: TitleProps) => {
-  return <h2 className="text-3xl font-noto text-white">{props.title}</h2>;
+  return (
+    <h2 className="font-noto text-white text-nowrap text-4xl sm:text-6xl lg:text-3xl">
+      {props.title}
+    </h2>
+  );
 };
 
 export default Title;

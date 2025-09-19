@@ -36,7 +36,7 @@ const Button = ({
       </button>
       <img
         src={icon}
-        className="w-auto h-8 transition-all duration-200 group-hover:scale-120"
+        className="w-auto h-8 transition-all duration-700 group-hover:scale-120"
       ></img>
     </div>
   );

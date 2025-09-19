@@ -8,13 +8,14 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex-1 content-center" />
-      <div className="flex justify-between items-end p-8">
-        <LiftAnimation delay={600}>
-          <Tagline tagline="The Next Level of Clean for Your Home" />
-        </LiftAnimation>
-        <LiftAnimation delay={600}>
+    <div className="flex flex-col h-full justify-around lg:justify-end">
+      <div className="flex flex-col h-full justify-evenly items-center lg:justify-between lg:flex-row lg:items-end lg:p-8">
+        <div className="w-xs sm:w-md lg:w-lg xl:w-2xl 2xl:w-4xl">
+          <LiftAnimation delay={300}>
+            <Tagline tagline="The Next Level of Clean for Your Home" />
+          </LiftAnimation>
+        </div>
+        <LiftAnimation delay={300}>
           <Button
             text="Book Now"
             backgroundColor="primary"
