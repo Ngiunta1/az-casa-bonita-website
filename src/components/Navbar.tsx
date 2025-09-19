@@ -1,14 +1,30 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router";
+import { capitalizeFirst } from "../utils";
 
 interface NavbarProps {
   subPages: string[];
 }
 
 const Navbar = ({ subPages }: NavbarProps) => {
-  const [currentPage, setCurrentPage] = useState("Home");
-
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const getCurrentPage = (path: string) => {
+    if (path === "/") {
+      return "Home";
+    } else {
+      return capitalizeFirst(path.slice(1));
+    }
+  };
+
+  const [currentPage, setCurrentPage] = useState(
+    getCurrentPage(location.pathname)
+  );
+
+  useEffect(() => {
+    setCurrentPage(getCurrentPage(location.pathname));
+  }, [location.pathname]);
 
   const handleClickSubPage = (subPage: string) => {
     setCurrentPage(subPage);
