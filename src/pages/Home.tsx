@@ -12,7 +12,10 @@ const Home = () => {
       <div className="flex flex-col h-full justify-evenly items-center lg:justify-between lg:flex-row lg:items-end lg:p-8">
         <div className="w-xs sm:w-md lg:w-lg xl:w-2xl 2xl:w-4xl">
           <LiftAnimation delay={300}>
-            <Tagline tagline="The Next Level of Clean for Your Home" />
+            <Tagline
+              tagline="The Next Level of Clean for Your Home"
+              onClick={() => navigate("/about")}
+            />
           </LiftAnimation>
         </div>
         <LiftAnimation delay={300}>
