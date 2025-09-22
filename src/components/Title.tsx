@@ -2,10 +2,10 @@ interface TitleProps {
   title: string;
 }
 
-const Title = (props: TitleProps) => {
+const Title = ({ title }: TitleProps) => {
   return (
     <h2 className="font-noto text-white text-nowrap text-4xl sm:text-6xl lg:text-3xl">
-      {props.title}
+      {title}
     </h2>
   );
 };
