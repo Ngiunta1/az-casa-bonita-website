@@ -2,6 +2,7 @@ import MainWrapper from "../components/MainWrapper";
 import Tagline from "../components/Tagline";
 import Button from "../components/Button";
 import { useNavigate } from "react-router";
+import { Animate } from "../components/Animate";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,19 +10,23 @@ const Home = () => {
   return (
     <div className="flex flex-col h-full justify-around lg:justify-end">
       <div className="flex flex-col h-full justify-evenly items-center lg:justify-between lg:flex-row lg:items-end lg:p-8">
-        <div className="w-xs sm:w-md lg:w-lg xl:w-2xl 2xl:w-4xl">
-          <Tagline
-            tagline="The Next Level of Clean for Your Home"
-            onClick={() => navigate("/about")}
+        <Animate mount={{ variant: "fadeUp" }} hover={{ variant: "lift" }}>
+          <div className="w-xs sm:w-md lg:w-lg xl:w-2xl 2xl:w-4xl cursor-pointer">
+            <Tagline
+              tagline="The Next Level of Clean for Your Home"
+              onClick={() => navigate("/about")}
+            />
+          </div>
+        </Animate>
+        <Animate mount={{ variant: "fadeUp" }} hover={{ variant: "lift" }}>
+          <Button
+            text="Book Now"
+            backgroundColor="primary"
+            icon="src\assets\icons\go-arrow.png"
+            onClick={() => navigate("/contact")}
+            data-animate="lift"
           />
-        </div>
-        <Button
-          text="Book Now"
-          backgroundColor="primary"
-          icon="src\assets\icons\go-arrow.png"
-          onClick={() => navigate("/contact")}
-          data-animate="lift"
-        />
+        </Animate>
       </div>
     </div>
   );
