@@ -30,6 +30,7 @@ const Button = ({
     <div
       className={`${buttonColor()} ${borderColor} flex gap-5 p-5 h-fit items-center rounded-2xl cursor-pointer group transition-all duration-400`}
       onClick={onClick}
+      data-animate="lift"
     >
       <button className="font-bold text-white text-3xl cursor-pointer">
         {text}

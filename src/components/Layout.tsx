@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router";
 import Header from "./Header";
 import MainWrapper from "./MainWrapper";
+import AnimationProvider from "./AnimationProvider";
 
 const subPages = ["Home", "About", "Contact"];
 const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
@@ -21,10 +22,12 @@ const Layout = () => {
 
   return (
     <MainWrapper backgroundImageSrc={getBackgroundForRoute(location.pathname)}>
-      <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-      <main className="w-full h-full">
-        <Outlet />
-      </main>
+      <AnimationProvider replay>
+        <Header subPages={subPages} logoSrc={logoSrc} title={title} />
+        <main className="w-full h-full">
+          <Outlet />
+        </main>
+      </AnimationProvider>
     </MainWrapper>
   );
 };
