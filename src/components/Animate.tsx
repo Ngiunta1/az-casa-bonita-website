@@ -43,7 +43,8 @@ type AnimationVariant =
   | "press"
   | "blur"
   | "skew"
-  | "morph";
+  | "morph"
+  | "fadeBounce";
 
 type IntensityLevel = "subtle" | "normal" | "strong" | "extreme";
 
@@ -274,7 +275,7 @@ const createAnimationStates = (
     bounce: {
       hidden: { y: 0 },
       visible: {
-        y: [0, -(10 * multiplier), 0],
+        y: [0, -(6 * multiplier), 0],
         transition: {
           duration: 0.6,
           times: [0, 0.5, 1],
@@ -442,6 +443,21 @@ const createAnimationStates = (
         },
       },
     },
+    fadeBounce: {
+      hidden: { opacity: 0, y: 0 },
+      visible: {
+        opacity: 1,
+        y: [0, -6, 0],
+        transition: {
+          opacity: { duration: 0.5 },
+          y: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        },
+      },
+    },
   };
 
   return animations[variant] || animations.fadeIn;
@@ -591,7 +607,7 @@ export const Animate = forwardRef<HTMLElement, AnimateProps>(
       if (focus) props.whileFocus = buildAnimationState(focus);
 
       // Exit animations
-      if (exit) props.exit = buildAnimationState(exit);
+      if (exit) props.exit = buildInitialState(exit);
 
       return props;
     }, [scroll, hover, tap, focus, mount, manual, exit, disabled, style]);
