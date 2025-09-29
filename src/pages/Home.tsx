@@ -13,6 +13,7 @@ const Home = () => {
         <Animate mount={{ variant: "fadeUp" }} hover={{ variant: "lift" }}>
           <div className="w-xs sm:w-md lg:w-lg xl:w-2xl 2xl:w-4xl cursor-pointer">
             <Tagline
+              className="text-white text-center lg:text-left"
               tagline="The Next Level of Clean for Your Home"
               onClick={() => navigate("/about")}
             />

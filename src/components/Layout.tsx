@@ -50,7 +50,7 @@ const Layout = () => {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col bg-cover bg-center h-screen overflow-y-hidden"
+      className="flex flex-col bg-cover bg-center h-screen overflow-y-hidden transition-all duration-400"
       style={
         getBackgroundForRoute(location.pathname)
           ? {

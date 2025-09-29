@@ -44,7 +44,8 @@ type AnimationVariant =
   | "blur"
   | "skew"
   | "morph"
-  | "fadeBounce";
+  | "fadeBounce"
+  | "wavyGlow";
 
 type IntensityLevel = "subtle" | "normal" | "strong" | "extreme";
 
@@ -455,6 +456,28 @@ const createAnimationStates = (
             repeat: Infinity,
             ease: "easeInOut",
           },
+        },
+      },
+    },
+    wavyGlow: {
+      hidden: {
+        opacity: 0,
+        y: 0,
+        filter: "drop-shadow(0 0 0px rgba(255, 255, 255, 0))",
+      },
+      visible: {
+        opacity: 1,
+        y: [0, -3 * multiplier, 0, 3 * multiplier, 0], // wave motion
+        filter: [
+          "drop-shadow(0 0 4px rgba(255, 255, 255, 0.5))",
+          "drop-shadow(0 0 8px rgba(255, 255, 255, 0.8))",
+          "drop-shadow(0 0 12px rgba(255, 255, 255, 1))",
+          "drop-shadow(0 0 8px rgba(255, 255, 255, 0.8))",
+          "drop-shadow(0 0 4px rgba(255, 255, 255, 0.5))",
+        ],
+        transition: {
+          duration: 2,
+          ease: "easeInOut",
         },
       },
     },
