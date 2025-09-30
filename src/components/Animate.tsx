@@ -45,7 +45,8 @@ type AnimationVariant =
   | "skew"
   | "morph"
   | "fadeBounce"
-  | "wavyGlow";
+  | "wavyGlow"
+  | "growGlow";
 
 type IntensityLevel = "subtle" | "normal" | "strong" | "extreme";
 
@@ -71,6 +72,8 @@ interface CustomIntensity {
   opacity?: number;
   blur?: number;
   skew?: number;
+  glowColor?: string;
+  textColor?: string;
 }
 
 interface AnimationConfig {
@@ -362,20 +365,6 @@ const createAnimationStates = (
         },
       },
     },
-    glow: {
-      hidden: {
-        filter: "brightness(1) drop-shadow(0 0 0px transparent)",
-      },
-      visible: {
-        filter: `brightness(${1 + 0.1 * multiplier}) drop-shadow(0 0 ${
-          10 * multiplier
-        }px rgba(255, 255, 255, 0.5))`,
-        transition: {
-          duration: 0.3,
-          ease: "easeOut",
-        },
-      },
-    },
     tilt: {
       hidden: { rotateX: 0, rotateY: 0 },
       visible: {
@@ -478,6 +467,38 @@ const createAnimationStates = (
         transition: {
           duration: 2,
           ease: "easeInOut",
+        },
+      },
+    },
+    growGlow: {
+      hidden: {
+        scale: 1,
+        filter: "drop-shadow(0 0 0px rgba(0, 0, 0, 0))",
+      },
+      visible: {
+        scale: custom.scale ?? 1 + 0.1 * multiplier,
+        filter: custom.glowColor
+          ? `drop-shadow(0 0 ${20 * multiplier}px ${custom.glowColor})`
+          : `drop-shadow(0 0 ${20 * multiplier}px rgba(255, 255, 255, 0.8))`,
+        ...(custom.textColor && { color: custom.textColor }),
+        transition: {
+          duration: 0.3,
+          ease: "easeOut",
+        },
+      },
+    },
+    glow: {
+      hidden: {
+        filter: "drop-shadow(0 0 0px rgba(0, 0, 0, 0))",
+      },
+      visible: {
+        filter: custom.glowColor
+          ? `drop-shadow(0 0 ${20 * multiplier}px ${custom.glowColor})`
+          : `drop-shadow(0 0 ${20 * multiplier}px rgba(255, 255, 255, 0.8))`,
+        ...(custom.textColor && { color: custom.textColor }),
+        transition: {
+          duration: 0.3,
+          ease: "easeOut",
         },
       },
     },

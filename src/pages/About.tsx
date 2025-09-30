@@ -1,48 +1,35 @@
-import { motion } from "motion/react";
+import { useState } from "react";
 import { Animate } from "../components/Animate";
-import Tagline from "../components/Tagline";
-
-interface WavyGlowTextProps {
-  text: string;
-}
-
-const WavyGlowText = ({ text }: WavyGlowTextProps) => {
-  return (
-    <div
-      style={{ display: "flex", gap: "0.1em" }}
-      className="text-transparent bg-clip-text bg-gradient-to-r from-[#A8C090] via-[#F28294] to-[#7DB3D9]"
-    >
-      {text.split("").map((char, i) => (
-        <Animate
-          key={i}
-          mount={{
-            variant: "wavyGlow",
-            delay: i * 0.03,
-            intensity: "normal",
-          }}
-          style={{
-            display: "inline-block",
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-          }}
-        >
-          {char}
-        </Animate>
-      ))}
-    </div>
-  );
-};
+import BioLeaves from "../components/icons/BioLeaves";
+import GalaxyStar from "../components/icons/GalaxyStar";
+import HouseHands from "../components/icons/HouseHands";
+import WavyGlowText from "../components/WavyGlowText";
+import CoreValue from "../components/CoreValue";
 
 const About = () => {
   return (
-    <div className="flex justify-center">
-      {/* <Animate mount={{ variant: "fadeUp" }}>
-        <Tagline
-          tagline="Making Your Casa Bonita"
-          className="pb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#A8C090] via-[#F28294] to-[#7DB3D9]"
-        />
-      </Animate> */}
+    <div className="flex flex-col h-full gap-48 items-center mt-4">
       <WavyGlowText text="Making Your Casa Bonita" />
+      <div className="flex flex-wrap w-full justify-around gap-12">
+        <CoreValue
+          text="Eco-Friendly"
+          color="#A8C090"
+          icon={<BioLeaves fill="#A8C090" />}
+          delay={0}
+        />
+        <CoreValue
+          text="Care & Compassion"
+          color="#F28294"
+          icon={<HouseHands fill="#F28294" />}
+          delay={0.5}
+        />
+        <CoreValue
+          text="Excellence"
+          color="#7DB3D9"
+          icon={<GalaxyStar fill="#7DB3D9" />}
+          delay={1}
+        />
+      </div>
     </div>
   );
 };

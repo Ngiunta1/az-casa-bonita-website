@@ -50,7 +50,7 @@ const Layout = () => {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col bg-cover bg-center h-screen overflow-y-hidden transition-all duration-400"
+      className="flex flex-col bg-cover bg-center h-screen transition-all duration-400"
       style={
         getBackgroundForRoute(location.pathname)
           ? {
@@ -64,7 +64,7 @@ const Layout = () => {
       {/* Main content header & page */}
       <MainWrapper>
         <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-        <Animate
+        {/* <Animate
           manual={{
             variant: "slideUp",
             isActive: showFooter,
@@ -76,10 +76,14 @@ const Layout = () => {
           <main className="w-full flex-1">
             <Outlet />
           </main>
-        </Animate>
-      </MainWrapper>
+        </Animate> */}
 
-      {/* Socials scroll hint */}
+        <main className="w-full flex-1">
+          <Outlet />
+        </main>
+      </MainWrapper>
+      {/* 
+       
       <AnimatePresence>
         {!showFooter && (
           <Animate
@@ -105,7 +109,7 @@ const Layout = () => {
         )}
       </AnimatePresence>
 
-      {/* Footer */}
+      
       <Animate
         manual={{
           variant: "slideUp",
@@ -115,7 +119,7 @@ const Layout = () => {
         }}
       >
         <Footer />
-      </Animate>
+      </Animate> */}
     </div>
   );
 };
