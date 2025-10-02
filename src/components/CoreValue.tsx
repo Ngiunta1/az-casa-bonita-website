@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Animate } from "./Animate";
 import { hexToRgba } from "../utils";
+import DownArrow from "../components/icons/DownArrow";
 
 interface CoreValueProps {
   text: string;
@@ -50,6 +51,15 @@ const CoreValue = ({ text, icon, color, delay }: CoreValueProps) => {
             {icon}
           </Animate>
         </div>
+        <Animate
+          manual={{
+            isActive: isHovered,
+            variant: "bounce",
+            repeat: "infinite",
+          }}
+        >
+          <DownArrow className="fill-white w-26 mt-[-1rem]" />
+        </Animate>
       </div>
     </Animate>
   );
