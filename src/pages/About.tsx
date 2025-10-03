@@ -10,7 +10,7 @@ const About = () => {
   return (
     <div className="flex flex-col h-full gap-48 items-center mt-4">
       <WavyGlowText text="Making Your Casa Bonita" />
-      <div className="flex flex-wrap w-full justify-around gap-12">
+      <section className="flex flex-wrap w-full justify-around gap-12">
         <CoreValue
           text="Eco-Friendly"
           color="#A8C090"
@@ -29,7 +29,13 @@ const About = () => {
           icon={<GalaxyStar fill="#7DB3D9" />}
           delay={1}
         />
-      </div>
+      </section>
+      <section
+        className="flex bg-cover h-64 w-full"
+        style={{ backgroundImage: "../images/eco-friendly-bg.png" }}
+      >
+        <a>boom</a>
+      </section>
     </div>
   );
 };
