@@ -8,7 +8,7 @@ import CoreValue from "../components/CoreValue";
 
 const About = () => {
   return (
-    <div className="flex flex-col h-full gap-48 items-center mt-4">
+    <div className="flex flex-col h-full items-center mt-4 gap-40">
       <WavyGlowText text="Making Your Casa Bonita" />
       <section className="flex flex-wrap w-full justify-around gap-12">
         <CoreValue
@@ -31,11 +31,11 @@ const About = () => {
         />
       </section>
       <section
-        className="flex bg-cover h-64 w-full"
-        style={{ backgroundImage: "../images/eco-friendly-bg.png" }}
-      >
-        <a>boom</a>
-      </section>
+        className="flex bg-cover h-400 w-full"
+        style={{
+          backgroundImage: "url(src/assets/images/eco-friendly-bg.png)",
+        }}
+      ></section>
     </div>
   );
 };
