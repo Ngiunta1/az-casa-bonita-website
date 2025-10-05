@@ -12,14 +12,15 @@ const title = "AZ Casa Bonita";
 
 const Layout = () => {
   const [showFooter, setShowFooter] = useState(false);
-
+  const [bg, setBg] = useState("");
+  const [show, setShow] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const location = useLocation();
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
+      // e.preventDefault();
 
       const isScrollingDown = e.deltaY > 0;
       setShowFooter(isScrollingDown);
@@ -37,18 +38,39 @@ const Layout = () => {
     };
   }, []);
 
-  const getBackgroundForRoute = (route: string) => {
-    const backgrounds: Record<string, string> = {
-      "/": "src/assets/images/clean-living-room.png",
-      "/about": "src/assets/images/sunset-living-room.png",
-      "/contact": "src/assets/images/kitchen.png",
-    };
+  useEffect(() => {
+    // Hide current background
+    setShow(false);
 
-    return backgrounds[route];
+    // After 300ms, switch background and show it
+    setTimeout(() => {
+      setBg(backgrounds[location.pathname] || backgrounds["/"]);
+      setShow(true);
+    }, 0);
+  }, [location.pathname]);
+
+  const backgrounds: Record<string, string> = {
+    "/": "src/assets/images/clean-living-room.png",
+    "/about": "src/assets/images/sunset-living-room.png",
+    "/contact": "src/assets/images/kitchen.png",
   };
 
   return (
-    <div
+    <div className="flex flex-col h-screen">
+      <Header subPages={subPages} logoSrc={logoSrc} title={title} />
+      <div
+        className={`absolute inset-0 bg-cover bg-center transition-all duration-500`}
+        style={{
+          backgroundImage: `url(${backgrounds[location.pathname]})`,
+        }}
+      />
+      <Outlet />
+    </div>
+  );
+};
+
+{
+  /* <div
       ref={containerRef}
       className="flex flex-col bg-cover bg-center h-screen transition-all duration-400"
       style={
@@ -61,7 +83,6 @@ const Layout = () => {
           : undefined
       }
     >
-      {/* Main content header & page */}
       <MainWrapper>
         <Header subPages={subPages} logoSrc={logoSrc} title={title} />
         {/* <Animate
@@ -76,13 +97,10 @@ const Layout = () => {
           <main className="w-full flex-1">
             <Outlet />
           </main>
-        </Animate> */}
+        </Animate>
 
-        <main className="w-full flex-1">
-          <Outlet />
-        </main>
+        <Outlet />
       </MainWrapper>
-      {/* 
        
       <AnimatePresence>
         {!showFooter && (
@@ -119,9 +137,8 @@ const Layout = () => {
         }}
       >
         <Footer />
-      </Animate> */}
-    </div>
-  );
-};
+      </Animate>
+    </div> */
+}
 
 export default Layout;

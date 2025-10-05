@@ -10,8 +10,11 @@ interface HeaderProps {
 
 const Header = ({ subPages, logoSrc, title }: HeaderProps) => {
   return (
-    <Animate mount={{ variant: "fadeDown" }}>
-      <header className="flex flex-col items-center w-full justify-center gap-15 lg:justify-between lg:flex-row lg:items-baseline">
+    <Animate
+      mount={{ variant: "fadeDown" }}
+      className="fixed top-0 w-full z-10"
+    >
+      <header className="flex flex-col py-8 px-12 items-center w-full justify-center gap-15 lg:justify-between lg:flex-row lg:items-baseline">
         {/* Logo + Title */}
         <TitleLogo title={title} logoSrc={logoSrc} />
 

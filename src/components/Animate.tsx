@@ -281,8 +281,7 @@ const createAnimationStates = (
       visible: {
         y: [0, -(6 * multiplier), 0],
         transition: {
-          duration: 0.6,
-          times: [0, 0.5, 1],
+          duration: 0.8,
           ease: "easeOut",
         },
       },
@@ -672,12 +671,12 @@ export const Animate = forwardRef<HTMLElement, AnimateProps>(
 
       // Use the hover transition as the default exit transition
       // This makes the "unhover" animation match the hover speed
-      const config = hover || tap || focus;
+      const config = hover || tap || focus || manual;
       if (config) {
         return buildTransition(config);
       }
       return undefined;
-    }, [hover, tap, focus]);
+    }, [hover, tap, focus, manual]);
 
     return (
       <MotionComponent

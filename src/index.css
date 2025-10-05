@@ -1,8 +1,40 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
+body {
+  @apply bg-black;
+}
+
 @import "tailwindcss";
 
 @theme {
   --font-noto: Noto Sans, sans-serif;
   --color-primary: #ff22ee;
+
+  /* Animation durations */
+  --animate-duration-fast: 0.5s;
+  --animate-duration-normal: 1s;
+  --animate-duration-slow: 1.5s;
+  --animate-duration-slower: 2s;
+
+  /* Animation timing functions */
+  --animate-timing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-timing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animate-timing-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+@layer utilities {
+  /* Fade animations */
+  .animate-fade-in {
+    animation: fade-in var(--animate-duration-normal)
+      var(--animate-timing-smooth) both;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
