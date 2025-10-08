@@ -15,11 +15,7 @@ const CoreValueSection = ({
 }: CoreValueSectionProps) => {
   return (
     <section
-      className={
-        className
-          ? className + " flex flex-col p-20 h-screen bg-cover bg-center pt-48"
-          : "flex flex-col p-20 h-screen bg-cover bg-center pt-48"
-      }
+      className={`${className} relative flex flex-col p-20 h-screen bg-cover bg-center pt-48`}
       style={{
         backgroundImage: `url(${image})`,
         backgroundColor: "rgba(0,0,0,0.3)",
