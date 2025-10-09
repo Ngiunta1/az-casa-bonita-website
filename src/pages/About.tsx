@@ -18,6 +18,12 @@ const About = () => {
   });
 
   const sm = useTransform(scrollYProgress, [0, 1], [250, -500]);
+  const md = useTransform(scrollYProgress, [0, 1], [400, -1000]);
+
+  const ecoSm = useTransform(scrollYProgress, [0, 1], [250, -500]);
+  const ecoMd = useTransform(scrollYProgress, [0, 1], [400, -650]);
+
+  const lg = useTransform(scrollYProgress, [0, 1], [400, -1000]);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -32,11 +38,12 @@ const About = () => {
 
   return (
     <div ref={container} className="flex flex-col snap-y snap-mandatory">
-      <motion.div style={{ y: sm }}>
-        <section className="flex flex-col h-screen snap-center items-center gap-40 bg-cover bg-center pt-38">
+      <section className="flex flex-col h-screen snap-center items-center gap-40 bg-cover bg-center pt-38">
+        <motion.div style={{ y: sm }}>
           <WavyGlowText text="Making Your Casa Bonita" />
-
-          <div className="flex flex-wrap w-full justify-around gap-12">
+        </motion.div>
+        <motion.div style={{ y: md, width: "100%" }}>
+          <div className="flex flex-wrap w-full justify-around gap-8">
             <CoreValue
               text="Eco-Friendly"
               color="#A8C090"
@@ -56,8 +63,8 @@ const About = () => {
               delay={1}
             />
           </div>
-        </section>
-      </motion.div>
+        </motion.div>
+      </section>
       <CoreValueSection
         className="snap-center"
         icon={<BioLeaves fill="#A8C090" />}
@@ -65,7 +72,9 @@ const About = () => {
         title="Cleaning That's Better for You & the Planet"
         subTitle="We use eco-friendly products and sustainable practices that leave
             your home sparkling—without harsh chemicals."
+        motionValues={{ sm: ecoSm, md: ecoMd, lg: lg }}
       />
+
       <CoreValueSection
         className="bg-top"
         icon={<HouseHands fill="#F28294" />}
@@ -73,13 +82,16 @@ const About = () => {
         title="Cleaning With Heart"
         subTitle="We treat every space with the same care as our own, 
             bringing comfort, respect, and peace of mind with every clean."
+        motionValues={{ sm: sm, md: md, lg: lg }}
       />
+
       <CoreValueSection
         icon={<GalaxyStar fill="#7DB3D9" />}
         image="src/assets/images/excellence-bg.png"
         title="Raising the Standard of Clean"
         subTitle="From first booking to final walkthrough, 
             we go above and beyond because good enough isn't good enough."
+        motionValues={{ sm: sm, md: md, lg: lg }}
       />
     </div>
   );
