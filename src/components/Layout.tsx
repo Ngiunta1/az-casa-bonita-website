@@ -6,7 +6,7 @@ import { Animate } from "./Animate";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-const subPages = ["Home", "About", "Contact"];
+const subPages = ["Home", "About", "Contact", "Test"];
 const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
 const title = "AZ Casa Bonita";
 
@@ -53,6 +53,7 @@ const Layout = () => {
     "/": "src/assets/images/clean-living-room.png",
     "/about": "src/assets/images/sunset-living-room.png",
     "/contact": "src/assets/images/kitchen.png",
+    "/test": "src/assets/images/sunset-living-room.png",
   };
 
   return (
