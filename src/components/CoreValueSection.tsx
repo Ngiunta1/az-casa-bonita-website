@@ -28,10 +28,10 @@ const CoreValueSection = ({
   const y = useTransform(scrollYProgress, [0, 1], [0, 0]);
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-[150vh]">
       <motion.section
         ref={container}
-        className={`${className} sticky h-[150vh] flex flex-col p-20 bg-cover bg-center pt-48`}
+        className={`${className} sticky h-screen flex flex-col p-20 bg-cover bg-center pt-48`}
         style={{
           backgroundImage: `url(${image})`,
           backgroundColor: "rgba(0,0,0,0.3)",
