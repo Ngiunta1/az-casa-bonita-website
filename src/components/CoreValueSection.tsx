@@ -7,7 +7,7 @@ interface CoreValueSectionProps {
   title: string;
   subTitle: string;
   className?: string;
-  motionValues: { sm: MotionValue; md: MotionValue; lg: MotionValue };
+  motionValues?: { sm: MotionValue; md: MotionValue; lg: MotionValue };
 }
 
 const CoreValueSection = ({
