@@ -66,8 +66,8 @@ const About = () => {
         </motion.div>
       </section>
       <CoreValueSection
-        className="snap-center"
         icon={<BioLeaves fill="#A8C090" />}
+        index={1}
         image="src/assets/images/eco-friendly-bg.png"
         title="Cleaning That's Better for You & the Planet"
         subTitle="We use eco-friendly products and sustainable practices that leave
@@ -77,6 +77,7 @@ const About = () => {
 
       <CoreValueSection
         className="bg-top"
+        index={2}
         icon={<HouseHands fill="#F28294" />}
         image="src/assets/images/care-and-compassion-bg.png"
         title="Cleaning With Heart"
@@ -87,6 +88,7 @@ const About = () => {
 
       <CoreValueSection
         icon={<GalaxyStar fill="#7DB3D9" />}
+        index={3}
         image="src/assets/images/excellence-bg.png"
         title="Raising the Standard of Clean"
         subTitle="From first booking to final walkthrough, 
