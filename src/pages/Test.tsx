@@ -19,7 +19,6 @@ const About = () => {
 
   const sm = useTransform(scrollYProgress, [0, 1], [250, -1000]);
   const md = useTransform(scrollYProgress, [0, 1], [400, -1500]);
-
   const lg = useTransform(scrollYProgress, [0, 1], [400, -1000]);
 
   useEffect(() => {
