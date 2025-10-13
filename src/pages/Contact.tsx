@@ -1,5 +1,10 @@
+import ContactButton from "../components/ContactButton";
+
 const Contact = () => {
-  return <div className="flex"></div>;
+  return;
+  <section className="flex flex-col items-center">
+    <ContactButton />
+  </section>;
 };
 
 export default Contact;

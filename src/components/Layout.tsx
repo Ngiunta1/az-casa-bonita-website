@@ -60,7 +60,7 @@ const Layout = () => {
     <div className="flex flex-col h-screen">
       <Header subPages={subPages} logoSrc={logoSrc} title={title} />
       <div
-        className={`absolute inset-0 bg-cover bg-center transition-all duration-500`}
+        className={`absolute inset-0 bg-cover bg-center transition-all duration-500 -z-10`}
         style={{
           backgroundImage: `url(${backgrounds[location.pathname]})`,
         }}
