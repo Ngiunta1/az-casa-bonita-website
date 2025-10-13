@@ -1,5 +1,7 @@
 const Contact = () => {
-  return <div className="flex"></div>;
+  return <section className="flex ">
+
+  </section>;
 };
 
 export default Contact;
