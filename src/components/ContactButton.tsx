@@ -14,17 +14,16 @@ const ContactButton = ({
   subText,
   onClick,
 }: ContactButtonProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <div className="flex flex-col w-full justify-center items-center">
-      <div className="flex bg-[rgba(23,23,23,0.4)] hover:bg-[rgba(23,23,23,0.6)] rounded-md cursor-pointer w-[600px] h-[100px] items-center">
-        <div className="flex flex-row">
-          <i className={`${icon} text-white text-5xl`}></i>
-          <div className="flex flex-col justify-center align-center items-center">
-            <h1 className="text-white font-bold">{mainText}</h1>
-            <h1 className="text-white font-light">{subText}</h1>
-          </div>
+    <div
+      className="flex bg-[rgba(23,23,23,0.4)] hover:bg-[rgba(23,23,23,0.6)] rounded-md cursor-pointer items-center"
+      onClick={onClick}
+    >
+      <div className="flex flex-row w-md px-4 py-5 gap-4">
+        <i className={`${icon} text-white text-5xl`}></i>
+        <div className="flex flex-col justify-center font-noto">
+          <h1 className="text-white font-medium">{mainText}</h1>
+          <h1 className="text-white font-extralight">{subText}</h1>
         </div>
       </div>
     </div>
