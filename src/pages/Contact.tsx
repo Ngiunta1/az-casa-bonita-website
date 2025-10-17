@@ -4,6 +4,7 @@ import Tagline from "../components/Tagline";
 
 const Contact = () => {
   const phoneNumber = "+1 (602) 884-9751";
+  const email = "AZCasaBonitaServices@gmail.com";
   return (
     <section className="flex h-screen w-full items-center justify-center">
       <div className="flex flex-row items-center gap-12 p-2">
@@ -19,11 +20,13 @@ const Contact = () => {
             mainText="Phone Number"
             subText={phoneNumber}
             icon="fa-solid fa-phone"
+            onClick={() => (window.location.href = `tel:${phoneNumber}`)}
           />
           <ContactButton
             mainText="Email"
-            subText="AZCasaBonitaServices@gmail.com"
+            subText={email}
             icon="fa-regular fa-envelope"
+            onClick={() => (window.location.href = `mailto:${email}`)}
           />
         </div>
       </div>

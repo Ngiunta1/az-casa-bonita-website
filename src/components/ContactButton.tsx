@@ -15,7 +15,7 @@ const ContactButton = ({
   onClick,
 }: ContactButtonProps) => {
   return (
-    <div
+    <button
       className="flex bg-[rgba(23,23,23,0.4)] hover:bg-[rgba(23,23,23,0.6)] rounded-md cursor-pointer items-center"
       onClick={onClick}
     >
@@ -26,7 +26,7 @@ const ContactButton = ({
           <h1 className="text-white font-extralight">{subText}</h1>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
