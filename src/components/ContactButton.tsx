@@ -2,14 +2,14 @@ import { div } from "motion/react-client";
 import { useState } from "react";
 
 interface ContactButtonProps {
-  icon?: string;
+  icon?: React.ComponentType<any>;
   mainText?: string;
   subText?: string;
   onClick?: () => void;
 }
 
 const ContactButton = ({
-  icon,
+  icon: Icon,
   mainText,
   subText,
   onClick,
@@ -20,7 +20,7 @@ const ContactButton = ({
       onClick={onClick}
     >
       <div className="flex flex-row w-md px-4 py-5 gap-4">
-        <i className={`${icon} text-white text-5xl`}></i>
+        {Icon && <Icon className="text-white w-auto h-32" strokeWidth={1} />}
         <div className="flex flex-col justify-center font-noto">
           <h1 className="text-white font-medium">{mainText}</h1>
           <h1 className="text-white font-extralight">{subText}</h1>

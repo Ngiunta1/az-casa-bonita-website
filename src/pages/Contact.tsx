@@ -1,6 +1,7 @@
 import { Animate } from "../components/Animate";
 import ContactButton from "../components/ContactButton";
 import Tagline from "../components/Tagline";
+import { Phone, Mail } from "lucide-react";
 
 const Contact = () => {
   const phoneNumber = "+1 (602) 884-9751";
@@ -19,13 +20,13 @@ const Contact = () => {
           <ContactButton
             mainText="Phone Number"
             subText={phoneNumber}
-            icon="fa-solid fa-phone"
+            icon={Phone}
             onClick={() => (window.location.href = `tel:${phoneNumber}`)}
           />
           <ContactButton
             mainText="Email"
             subText={email}
-            icon="fa-regular fa-envelope"
+            icon={Mail}
             onClick={() => (window.location.href = `mailto:${email}`)}
           />
         </div>
