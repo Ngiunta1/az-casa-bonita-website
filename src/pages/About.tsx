@@ -25,19 +25,8 @@ const About = () => {
 
   const lg = useTransform(scrollYProgress, [0, 1], [400, -1000]);
 
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-  }, []);
-
   return (
-    <div ref={container} className="flex flex-col snap-y snap-mandatory">
+    <div ref={container} className="overflow-y-auto">
       <section className="flex flex-col h-screen snap-center items-center gap-40 bg-cover bg-center pt-38">
         <motion.div style={{ y: sm }}>
           <WavyGlowText text="Making Your Casa Bonita" />

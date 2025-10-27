@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import { Animate } from "./Animate";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import Lenis from "lenis";
 
 const subPages = ["Home", "About", "Contact", "Test"];
 const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
@@ -48,6 +49,17 @@ const Layout = () => {
       setShow(true);
     }, 0);
   }, [location.pathname]);
+
+  // useEffect(() => {
+  //   const lenis = new Lenis();
+
+  //   function raf(time) {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   }
+
+  //   requestAnimationFrame(raf);
+  // }, []);
 
   const backgrounds: Record<string, string> = {
     "/": "src/assets/images/clean-living-room.png",
