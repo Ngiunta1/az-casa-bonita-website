@@ -18,7 +18,7 @@ const ContactButton = ({
   return (
     <Animate mount={{ variant: "fadeUp" }} hover={{ variant: "lift" }}>
       <button
-        className="flex bg-[rgba(23,23,23,0.4)] hover:bg-[rgba(23,23,23,0.6)] rounded-xl cursor-pointer items-center"
+        className="flex bg-[rgba(23,23,23,0.4)] hover:bg-[rgba(23,23,23,0.6)] rounded-xl cursor-pointer items-center transition-all duration-500"
         onClick={onClick}
       >
         <div className="flex flex-row w-2xl px-4 py-5 gap-4">

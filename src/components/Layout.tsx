@@ -11,6 +11,13 @@ const subPages = ["Home", "About", "Contact", "Test"];
 const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
 const title = "AZ Casa Bonita";
 
+const backgrounds: Record<string, string> = {
+  "/": "src/assets/images/clean-living-room.png",
+  "/about": "src/assets/images/sunset-living-room.png",
+  "/contact": "src/assets/images/kitchen.png",
+  "/test": "src/assets/images/sunset-living-room.png",
+};
+
 const Layout = () => {
   const [showFooter, setShowFooter] = useState(false);
   const [bg, setBg] = useState("");
@@ -18,6 +25,10 @@ const Layout = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const location = useLocation();
+  const bgUrl = backgrounds[location.pathname] ?? backgrounds["/"];
+
+  const { pathname } = useLocation();
+  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -50,6 +61,10 @@ const Layout = () => {
     }, 0);
   }, [location.pathname]);
 
+  useEffect(() => {
+    prevPathRef.current = pathname;
+  }, [pathname]);
+
   // useEffect(() => {
   //   const lenis = new Lenis();
 
@@ -61,25 +76,34 @@ const Layout = () => {
   //   requestAnimationFrame(raf);
   // }, []);
 
-  const backgrounds: Record<string, string> = {
-    "/": "src/assets/images/clean-living-room.png",
-    "/about": "src/assets/images/sunset-living-room.png",
-    "/contact": "src/assets/images/kitchen.png",
-    "/test": "src/assets/images/sunset-living-room.png",
-  };
-
   return (
-    <div className="flex flex-col h-screen">
-      <div
-        className={`absolute inset-0 bg-cover bg-center transition-all duration-500`}
-        style={{
-          backgroundImage: `url(${backgrounds[location.pathname]})`,
-        }}
-      />
-      <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-      <div className="relative flex-1">
-        <Outlet />
+    <div className="relative min-h-screen flex flex-col" data-route={pathname}>
+      {/* Background deck (renders once; scrolls with content) */}
+      <div className="bg-deck">
+        {/* You can add `is-entering` via a tiny trick below if you like the zoom/blur pop */}
+        <div
+          className={`bg-layer bg--home ${pathname === "/" ? "is-active" : ""}`}
+        />
+        <div
+          className={`bg-layer bg--about ${
+            pathname === "/about" ? "is-active" : ""
+          }`}
+        />
+        <div
+          className={`bg-layer bg--contact ${
+            pathname === "/contact" ? "is-active" : ""
+          }`}
+        />
+        <div
+          className={`bg-layer bg--test ${
+            pathname === "/test" ? "is-active" : ""
+          }`}
+        />
       </div>
+
+      <Header subPages={subPages} logoSrc={logoSrc} title={title} />
+
+      <Outlet />
     </div>
   );
 };

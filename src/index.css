@@ -80,3 +80,79 @@ body {
     opacity: 1;
   }
 }
+
+/* Test */
+
+/* Shared layer styles */
+.bg-deck {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 500ms ease-in-out, visibility 0s linear 500ms,
+    /* hide after fade-out */ transform 700ms ease-in-out,
+    filter 700ms ease-in-out;
+  will-change: opacity, transform, filter;
+}
+
+/* A gentle zoom+blur “cinematic” fade for the entering layer */
+.bg-layer.is-entering {
+  transform: scale(1.02);
+  filter: blur(2px);
+}
+.bg-layer.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 500ms ease-in-out, visibility 0s,
+    transform 700ms ease-in-out, filter 700ms ease-in-out;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+/* One class per route (use your actual image paths) */
+.bg--home {
+  background-image: url("src/assets/images/clean-living-room.png");
+}
+.bg--about {
+  background-image: url("src/assets/images/sunset-living-room.png");
+}
+.bg--contact {
+  background-image: url("src/assets/images/kitchen.png");
+}
+.bg--test {
+  background-image: url("src/assets/images/sunset-living-room.png");
+}
+
+/* Route selectors flip the correct layer to active */
+[data-route="/"] .bg--home {
+  opacity: 1;
+  visibility: visible;
+}
+[data-route="/about"] .bg--about {
+  opacity: 1;
+  visibility: visible;
+}
+[data-route="/contact"] .bg--contact {
+  opacity: 1;
+  visibility: visible;
+}
+[data-route="/test"] .bg--test {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bg-layer,
+  .bg-layer.is-active {
+    transition: none;
+  }
+}

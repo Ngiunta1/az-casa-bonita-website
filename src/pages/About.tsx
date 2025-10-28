@@ -26,7 +26,7 @@ const About = () => {
   const lg = useTransform(scrollYProgress, [0, 1], [400, -1000]);
 
   return (
-    <div ref={container} className="overflow-y-auto">
+    <div ref={container} className="h-screen overflow-y-auto">
       <section className="flex flex-col h-screen snap-center items-center gap-40 bg-cover bg-center pt-38">
         <motion.div style={{ y: sm }}>
           <WavyGlowText text="Making Your Casa Bonita" />
