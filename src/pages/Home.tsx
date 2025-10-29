@@ -9,10 +9,10 @@ const Home = () => {
 
   return (
     <div
-      className="flex flex-col h-full bg-cover bg-center justify-around lg:justify-end"
-      // style={{
-      //   backgroundImage: "url(src/assets/images/clean-living-room.png)",
-      // }}
+      className="flex flex-col h-screen bg-cover bg-center justify-around lg:justify-end"
+      style={{
+        backgroundImage: "url(src/assets/images/clean-living-room.png)",
+      }}
     >
       <div className="flex flex-col h-full justify-evenly items-center lg:justify-between lg:flex-row lg:items-end lg:p-20">
         <Animate mount={{ variant: "fadeUp" }} hover={{ variant: "lift" }}>

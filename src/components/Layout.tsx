@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Lenis from "lenis";
 
-const subPages = ["Home", "About", "Contact", "Test"];
+const subPages = ["Home", "About", "Contact"];
 const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
 const title = "AZ Casa Bonita";
 
@@ -15,7 +15,6 @@ const backgrounds: Record<string, string> = {
   "/": "src/assets/images/clean-living-room.png",
   "/about": "src/assets/images/sunset-living-room.png",
   "/contact": "src/assets/images/kitchen.png",
-  "/test": "src/assets/images/sunset-living-room.png",
 };
 
 const Layout = () => {
@@ -78,70 +77,10 @@ const Layout = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col" data-route={pathname}>
-      {/* Background deck (renders once; scrolls with content) */}
-      <div className="bg-deck">
-        {/* You can add `is-entering` via a tiny trick below if you like the zoom/blur pop */}
-        <div
-          className={`bg-layer bg--home ${pathname === "/" ? "is-active" : ""}`}
-        />
-        <div
-          className={`bg-layer bg--about ${
-            pathname === "/about" ? "is-active" : ""
-          }`}
-        />
-        <div
-          className={`bg-layer bg--contact ${
-            pathname === "/contact" ? "is-active" : ""
-          }`}
-        />
-        <div
-          className={`bg-layer bg--test ${
-            pathname === "/test" ? "is-active" : ""
-          }`}
-        />
-      </div>
-
       <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-
       <Outlet />
-    </div>
-  );
-};
 
-{
-  /* <div
-      ref={containerRef}
-      className="flex flex-col bg-cover bg-center h-screen transition-all duration-400"
-      style={
-        getBackgroundForRoute(location.pathname)
-          ? {
-              backgroundImage: `url(${getBackgroundForRoute(
-                location.pathname
-              )})`,
-            }
-          : undefined
-      }
-    >
-      <MainWrapper>
-        <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-        {/* <Animate
-          manual={{
-            variant: "slideUp",
-            isActive: showFooter,
-            customIntensity: { y: 64 },
-            duration: 0.4,
-          }}
-          className="flex flex-col flex-1"
-        >
-          <main className="w-full flex-1">
-            <Outlet />
-          </main>
-        </Animate>
-
-        <Outlet />
-      </MainWrapper>
-       
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {!showFooter && (
           <Animate
             mount={{
@@ -165,8 +104,6 @@ const Layout = () => {
           </Animate>
         )}
       </AnimatePresence>
-
-      
       <Animate
         manual={{
           variant: "slideUp",
@@ -176,8 +113,9 @@ const Layout = () => {
         }}
       >
         <Footer />
-      </Animate>
-    </div> */
-}
+      </Animate> */}
+    </div>
+  );
+};
 
 export default Layout;

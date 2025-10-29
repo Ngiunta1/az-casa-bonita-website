@@ -127,8 +127,8 @@ body {
 .bg--contact {
   background-image: url("src/assets/images/kitchen.png");
 }
-.bg--test {
-  background-image: url("src/assets/images/sunset-living-room.png");
+.bg--contact2 {
+  background-image: url("src/assets/images/night-living-room.png");
 }
 
 /* Route selectors flip the correct layer to active */
@@ -144,7 +144,7 @@ body {
   opacity: 1;
   visibility: visible;
 }
-[data-route="/test"] .bg--test {
+[data-route="/contact"] .bg--contact2 {
   opacity: 1;
   visibility: visible;
 }

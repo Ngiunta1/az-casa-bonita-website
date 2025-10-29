@@ -8,7 +8,6 @@ import Header from "./components/Header.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
 import Layout from "./components/Layout.tsx";
-import Test from "./pages/Test.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -18,7 +17,6 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/test" element={<Test />} />
         </Route>
       </Routes>
     </BrowserRouter>
