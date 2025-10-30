@@ -8,9 +8,10 @@ interface CoreValueProps {
   icon: React.ReactNode;
   color: string;
   delay: number;
+  onClick?: () => void;
 }
 
-const CoreValue = ({ text, icon, color, delay }: CoreValueProps) => {
+const CoreValue = ({ text, icon, color, delay, onClick }: CoreValueProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -21,6 +22,7 @@ const CoreValue = ({ text, icon, color, delay }: CoreValueProps) => {
         className="flex flex-col gap-8 items-center group cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={onClick}
       >
         <Animate
           manual={{

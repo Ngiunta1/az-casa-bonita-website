@@ -12,20 +12,150 @@ import Section from "../components/Section";
 import { Deck } from "../components/Deck";
 
 const About = () => {
-  const container = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isScrolling = useRef(false);
+  const touchStart = useRef(0);
 
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-  //   offset: ["start end", "end start"],
-  // });
+  // Function to scroll to a specific section
+  const scrollToSection = (sectionIndex: number) => {
+    console.log("scrollToSection called with index:", sectionIndex);
 
-  // const sm = useTransform(scrollYProgress, [0, 1], [250, -500]);
-  // const md = useTransform(scrollYProgress, [0, 1], [400, -1000]);
+    const container = containerRef.current;
+    console.log("Container:", container);
+    console.log("isScrolling.current:", isScrolling.current);
 
-  // const ecoSm = useTransform(scrollYProgress, [0, 1], [250, -500]);
-  // const ecoMd = useTransform(scrollYProgress, [0, 1], [400, -650]);
+    if (!container || isScrolling.current) {
+      console.log("Exiting early - container or isScrolling issue");
+      return;
+    }
 
-  // const lg = useTransform(scrollYProgress, [0, 1], [400, -1000]);
+    isScrolling.current = true;
+
+    const viewportHeight = window.innerHeight;
+    const targetScroll = sectionIndex * viewportHeight;
+    const startScroll = container.scrollTop;
+    const distance = targetScroll - startScroll;
+
+    console.log("Scroll details:", {
+      viewportHeight,
+      targetScroll,
+      startScroll,
+      distance,
+    });
+
+    const duration = 1000;
+    const startTime = performance.now();
+
+    const easeInOutCubic = (t: number) => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = easeInOutCubic(progress);
+
+      container.scrollTop = startScroll + distance * easeProgress;
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        console.log("Scroll animation complete");
+        isScrolling.current = false;
+      }
+    };
+
+    requestAnimationFrame(animate);
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+
+      if (isScrolling.current) return;
+
+      isScrolling.current = true;
+
+      const viewportHeight = window.innerHeight;
+      const currentIndex = Math.round(container.scrollTop / viewportHeight);
+
+      // Snap immediately on scroll direction (4 sections: 0, 1, 2, 3)
+      const nextIndex =
+        e.deltaY > 0
+          ? Math.min(currentIndex + 1, 3) // 4 sections total
+          : Math.max(currentIndex - 1, 0);
+
+      const targetScroll = nextIndex * viewportHeight;
+      const startScroll = container.scrollTop;
+      const distance = targetScroll - startScroll;
+
+      if (distance === 0) {
+        isScrolling.current = false;
+        return;
+      }
+
+      const duration = 1000;
+      const startTime = performance.now();
+
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = easeInOutCubic(progress);
+
+        container.scrollTop = startScroll + distance * easeProgress;
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          isScrolling.current = false;
+        }
+      };
+
+      requestAnimationFrame(animate);
+    };
+
+    // Handle touch for mobile
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStart.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isScrolling.current) {
+        e.preventDefault();
+        return;
+      }
+
+      const touchEnd = e.touches[0].clientY;
+      const diff = touchStart.current - touchEnd;
+
+      // Trigger on minimal touch movement (more sensitive)
+      if (Math.abs(diff) > 30) {
+        e.preventDefault();
+        handleWheel({ deltaY: diff, preventDefault: () => {} } as WheelEvent);
+      }
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    container.addEventListener("touchstart", handleTouchStart, {
+      passive: false,
+    });
+    container.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
 
   return (
     <Deck
@@ -36,7 +166,7 @@ const About = () => {
         "src/assets/images/excellence-bg.png",
       ]}
     >
-      <div className="h-screen overflow-y-auto">
+      <div ref={containerRef} className="h-screen overflow-y-auto">
         <Section className="h-full" deckIndex={0}>
           <div className="flex flex-col w-full h-full justify-evenly items-center lg:p-20">
             <WavyGlowText text="Making Your Casa Bonita" />
@@ -46,18 +176,21 @@ const About = () => {
                 color="#A8C090"
                 icon={<BioLeaves fill="#A8C090" />}
                 delay={0}
+                onClick={() => scrollToSection(1)}
               />
               <CoreValue
                 text="Care & Compassion"
                 color="#F28294"
                 icon={<HouseHands fill="#F28294" />}
                 delay={0.5}
+                onClick={() => scrollToSection(2)}
               />
               <CoreValue
                 text="Excellence"
                 color="#7DB3D9"
                 icon={<GalaxyStar fill="#7DB3D9" />}
                 delay={1}
+                onClick={() => scrollToSection(3)}
               />
             </div>
           </div>

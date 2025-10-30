@@ -1,3 +1,5 @@
+import BioLeaves from "./icons/BioLeaves";
+
 interface IconInfoProps {
   icon: string;
   title: string;
