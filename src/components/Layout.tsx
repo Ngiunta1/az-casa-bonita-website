@@ -19,15 +19,7 @@ const backgrounds: Record<string, string> = {
 
 const Layout = () => {
   const [showFooter, setShowFooter] = useState(false);
-  const [bg, setBg] = useState("");
-  const [show, setShow] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const location = useLocation();
-  const bgUrl = backgrounds[location.pathname] ?? backgrounds["/"];
-
-  const { pathname } = useLocation();
-  const prevPathRef = useRef(pathname);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -49,38 +41,11 @@ const Layout = () => {
     };
   }, []);
 
-  useEffect(() => {
-    // Hide current background
-    setShow(false);
-
-    // After 300ms, switch background and show it
-    setTimeout(() => {
-      setBg(backgrounds[location.pathname] || backgrounds["/"]);
-      setShow(true);
-    }, 0);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    prevPathRef.current = pathname;
-  }, [pathname]);
-
-  // useEffect(() => {
-  //   const lenis = new Lenis();
-
-  //   function raf(time) {
-  //     lenis.raf(time);
-  //     requestAnimationFrame(raf);
-  //   }
-
-  //   requestAnimationFrame(raf);
-  // }, []);
-
   return (
-    <div className="relative min-h-screen flex flex-col" data-route={pathname}>
+    <div ref={containerRef} className="relative min-h-screen flex flex-col">
       <Header subPages={subPages} logoSrc={logoSrc} title={title} />
       <Outlet />
-
-      {/* <AnimatePresence>
+      <AnimatePresence>
         {!showFooter && (
           <Animate
             mount={{
@@ -104,16 +69,6 @@ const Layout = () => {
           </Animate>
         )}
       </AnimatePresence>
-      <Animate
-        manual={{
-          variant: "slideUp",
-          isActive: showFooter,
-          customIntensity: { y: 64 },
-          duration: 0.4,
-        }}
-      >
-        <Footer />
-      </Animate> */}
     </div>
   );
 };

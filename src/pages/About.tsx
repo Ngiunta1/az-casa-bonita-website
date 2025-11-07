@@ -10,6 +10,7 @@ import Lenis from "lenis";
 import { useScroll, useTransform } from "motion/react";
 import Section from "../components/Section";
 import { Deck } from "../components/Deck";
+import Footer from "../components/Footer";
 
 const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -32,40 +33,69 @@ const About = () => {
     isScrolling.current = true;
 
     const viewportHeight = window.innerHeight;
-    const targetScroll = sectionIndex * viewportHeight;
-    const startScroll = container.scrollTop;
-    const distance = targetScroll - startScroll;
+    const currentIndex = Math.round(container.scrollTop / viewportHeight);
+    const targetIndex = sectionIndex;
 
-    console.log("Scroll details:", {
-      viewportHeight,
-      targetScroll,
-      startScroll,
-      distance,
-    });
+    const direction = targetIndex > currentIndex ? 1 : -1;
+    const sectionsToVisit: number[] = [];
 
-    const duration = 1000;
-    const startTime = performance.now();
+    for (
+      let i = currentIndex + direction;
+      direction > 0 ? i <= targetIndex : i <= targetIndex;
+      i += direction
+    ) {
+      sectionsToVisit.push(i);
+    }
 
-    const easeInOutCubic = (t: number) => {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
+    let currentSectionIndex = 0;
 
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeProgress = easeInOutCubic(progress);
-
-      container.scrollTop = startScroll + distance * easeProgress;
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        console.log("Scroll animation complete");
+    const scrollToNextSection = () => {
+      if (currentSectionIndex >= sectionsToVisit.length) {
+        console.log("All sections visited");
         isScrolling.current = false;
+        return;
       }
+
+      const nextSection = sectionsToVisit[currentSectionIndex];
+      const targetScroll = nextSection * viewportHeight;
+      const startScroll = container.scrollTop;
+      const distance = targetScroll - startScroll;
+
+      console.log(`Scrolling to section ${nextSection}`);
+
+      const duration = 800; // Faster scroll between sections
+      const startTime = performance.now();
+
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animate = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = easeInOutCubic(progress);
+
+        container.scrollTop = startScroll + distance * easeProgress;
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          console.log(`Reached section ${nextSection}`);
+          currentSectionIndex++;
+
+          // Pause before moving to next section (or finish if this was the last one)
+          if (currentSectionIndex < sectionsToVisit.length) {
+            setTimeout(scrollToNextSection, 350); // 500ms pause at each section
+          } else {
+            isScrolling.current = false;
+          }
+        }
+      };
+
+      requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
+    scrollToNextSection();
   };
 
   useEffect(() => {
@@ -73,7 +103,7 @@ const About = () => {
     if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
+      // e.preventDefault();
 
       if (isScrolling.current) return;
 
@@ -243,6 +273,7 @@ const About = () => {
             </div>
           </div>
         </Section>
+        <Footer />
       </div>
     </Deck>
   );
