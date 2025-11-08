@@ -5,102 +5,12 @@ import Tagline from "../components/Tagline";
 import { Phone, Mail, ChevronDown } from "lucide-react";
 import Section from "../components/Section";
 import { Deck } from "../components/Deck";
+import ScrollSnap, { type ScrollSnapHandle } from "../components/ScrollSnap";
 
 const Contact = () => {
   const phoneNumber = "+1 (602) 884-9751";
   const email = "AZCasaBonitaServices@gmail.com";
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isScrolling = useRef(false);
-  const touchStart = useRef(0);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-
-      if (isScrolling.current) return;
-
-      isScrolling.current = true;
-
-      const viewportHeight = window.innerHeight;
-      const currentIndex = Math.round(container.scrollTop / viewportHeight);
-
-      // Snap immediately on scroll direction
-      const nextIndex =
-        e.deltaY > 0
-          ? Math.min(currentIndex + 1, 1) // Only 2 sections (0 and 1)
-          : Math.max(currentIndex - 1, 0);
-
-      const targetScroll = nextIndex * viewportHeight;
-      const startScroll = container.scrollTop;
-      const distance = targetScroll - startScroll;
-
-      if (distance === 0) {
-        isScrolling.current = false;
-        return;
-      }
-
-      const duration = 1000;
-      const startTime = performance.now();
-
-      const easeInOutCubic = (t: number) => {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      };
-
-      const animate = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easeProgress = easeInOutCubic(progress);
-
-        container.scrollTop = startScroll + distance * easeProgress;
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          isScrolling.current = false;
-        }
-      };
-
-      requestAnimationFrame(animate);
-    };
-
-    // Handle touch for mobile
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStart.current = e.touches[0].clientY;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (isScrolling.current) {
-        e.preventDefault();
-        return;
-      }
-
-      const touchEnd = e.touches[0].clientY;
-      const diff = touchStart.current - touchEnd;
-
-      // Trigger on minimal touch movement (more sensitive)
-      if (Math.abs(diff) > 30) {
-        e.preventDefault();
-        handleWheel({ deltaY: diff, preventDefault: () => {} } as WheelEvent);
-      }
-    };
-
-    container.addEventListener("wheel", handleWheel, { passive: false });
-    container.addEventListener("touchstart", handleTouchStart, {
-      passive: false,
-    });
-    container.addEventListener("touchmove", handleTouchMove, {
-      passive: false,
-    });
-
-    return () => {
-      container.removeEventListener("wheel", handleWheel);
-      container.removeEventListener("touchstart", handleTouchStart);
-      container.removeEventListener("touchmove", handleTouchMove);
-    };
-  }, []);
+  const snapRef = useRef<ScrollSnapHandle>(null);
 
   return (
     <Deck
@@ -109,7 +19,7 @@ const Contact = () => {
         "src/assets/images/night-living-room.png",
       ]}
     >
-      <div ref={containerRef} className="h-screen overflow-y-auto">
+      <ScrollSnap ref={snapRef}>
         <Section
           className="flex h-screen w-full items-center justify-center lg:p-20"
           deckIndex={0}
@@ -143,7 +53,10 @@ const Contact = () => {
             </div>
             <Animate mount={{ variant: "fadeBounce", intensity: "extreme" }}>
               <div className="flex flex-col gap-3 items-center">
-                <h1 className="text-white font-semibold text-3xl tracking-tight">
+                <h1
+                  className="text-white font-semibold text-3xl tracking-tight"
+                  onClick={() => snapRef.current?.next()}
+                >
                   Scroll Down For Scheduling
                 </h1>
                 <ChevronDown color="white" size={36} />
@@ -152,7 +65,7 @@ const Contact = () => {
           </div>
         </Section>
         <Section deckIndex={1}></Section>
-      </div>
+      </ScrollSnap>
     </Deck>
   );
 };

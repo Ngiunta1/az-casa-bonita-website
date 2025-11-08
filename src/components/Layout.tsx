@@ -23,8 +23,6 @@ const Layout = () => {
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
-      // e.preventDefault();
-
       const isScrollingDown = e.deltaY > 0;
       setShowFooter(isScrollingDown);
     };
