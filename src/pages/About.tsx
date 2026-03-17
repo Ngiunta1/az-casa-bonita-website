@@ -55,14 +55,14 @@ const About = () => {
         </Section>
         <Section className="h-full" deckIndex={1}>
           <div className="flex w-full h-full items-center justify-center gap-8 p-8">
-            <div className="flex flex-col items-center gap-20">
-              <div className="flex items-cetner justify-center w-56 h-56 p-10 bg-black/30 rounded-full">
+            <div className="flex flex-col items-center gap-10">
+              <div className="flex items-cetner justify-center aspect-square w-20 p-4 sm:w-24 sm:p-4 md:w-32 md:p-6 lg:w-40 lg:p-8 xl:w-48 xl:p-10 2xl:w-56 2xl:p-11 bg-black/30 rounded-full">
                 <BioLeaves fill="#A8C090" />
               </div>
-              <h1 className="text-white text-6xl font-bold text-center drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]">
+              <h1 className="text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-6xl font-bold text-center drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]">
                 Eco-Friendly
               </h1>
-              <h2 className="text-white text-4xl font-light text-center w-3xl">
+              <h2 className="text-white text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-4xl font-light text-center max-w-3xl">
                 We use eco-friendly products and sustainable practices that
                 leave your home sparkling—without harsh chemicals.
               </h2>

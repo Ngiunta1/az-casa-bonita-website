@@ -1,5 +1,4 @@
 import { motion } from "motion/react";
-import Tagline from "./Tagline";
 
 interface WavyGlowTextProps {
   text: string;
