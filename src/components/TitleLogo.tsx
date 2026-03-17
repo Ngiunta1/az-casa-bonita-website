@@ -10,11 +10,11 @@ const TitleLogo = ({ title, logoSrc }: TitleLogoProps) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex gap-2 row flex-col-reverse items-center lg:gap-8 lg:flex-row hover:cursor-pointer"
+      className="flex items-center justify-center gap-4 w-full flex-row hover:cursor-pointer lg:justify-start"
       onClick={() => navigate("/")}
     >
+      <img src={logoSrc} className="w-12" />
       <Title title={title} />
-      <img src={logoSrc} className="w-35 lg:w-12" />
     </div>
   );
 };
