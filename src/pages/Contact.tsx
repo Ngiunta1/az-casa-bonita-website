@@ -1,11 +1,12 @@
-import { useEffect, useRef } from "react";
+import { Mail, Phone } from "lucide-react";
+import { useRef } from "react";
 import { Animate } from "../components/Animate";
 import ContactButton from "../components/ContactButton";
-import Tagline from "../components/Tagline";
-import { Phone, Mail, ChevronDown } from "lucide-react";
-import Section from "../components/Section";
 import { Deck } from "../components/Deck";
+import Footer from "../components/Footer";
 import ScrollSnap, { type ScrollSnapHandle } from "../components/ScrollSnap";
+import Section from "../components/Section";
+import Tagline from "../components/Tagline";
 
 const Contact = () => {
   const phoneNumber = "+1 (602) 884-9751";
@@ -51,7 +52,7 @@ const Contact = () => {
                 />
               </div>
             </div>
-            <Animate mount={{ variant: "fadeBounce", intensity: "extreme" }}>
+            {/* <Animate mount={{ variant: "fadeBounce", intensity: "extreme" }}>
               <div className="flex flex-col gap-3 items-center">
                 <h1
                   className="text-white font-semibold text-3xl tracking-tight"
@@ -61,10 +62,11 @@ const Contact = () => {
                 </h1>
                 <ChevronDown color="white" size={36} />
               </div>
-            </Animate>
+            </Animate> */}
           </div>
         </Section>
-        <Section deckIndex={1}></Section>
+        {/* <Section deckIndex={1}></Section> */}
+        <Footer />
       </ScrollSnap>
     </Deck>
   );

@@ -1,17 +1,13 @@
-import { useEffect, useRef, useState } from "react";
-import { Animate } from "../components/Animate";
+import { useRef } from "react";
+import CoreValue from "../components/CoreValue";
+import { Deck } from "../components/Deck";
+import Footer from "../components/Footer";
 import BioLeaves from "../components/icons/BioLeaves";
 import GalaxyStar from "../components/icons/GalaxyStar";
 import HouseHands from "../components/icons/HouseHands";
-import WavyGlowText from "../components/WavyGlowText";
-import CoreValue from "../components/CoreValue";
-import CoreValueSection from "../components/CoreValueSection";
-import Lenis from "lenis";
-import { useScroll, useTransform } from "motion/react";
-import Section from "../components/Section";
-import { Deck } from "../components/Deck";
-import Footer from "../components/Footer";
 import ScrollSnap, { type ScrollSnapHandle } from "../components/ScrollSnap";
+import Section from "../components/Section";
+import WavyGlowText from "../components/WavyGlowText";
 
 const About = () => {
   const snapRef = useRef<ScrollSnapHandle>(null);
@@ -29,7 +25,7 @@ const About = () => {
         <Section className="h-full" deckIndex={0}>
           <div className="flex flex-col w-full h-full justify-evenly items-center lg:p-20">
             <WavyGlowText text="Making Your Casa Bonita" />
-            <div className="flex flex-wrap w-full justify-around gap-8">
+            <div className="flex flex-wrap w-full justify-around gap-x-8 gap-y-0">
               <CoreValue
                 text="Eco-Friendly"
                 color="#A8C090"

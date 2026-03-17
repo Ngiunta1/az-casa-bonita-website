@@ -49,7 +49,6 @@ const Footer = () => {
           </div>
         ))}
       </div>
-      <div className="text-xl text-white">Handcrafted</div>
     </footer>
   );
 };

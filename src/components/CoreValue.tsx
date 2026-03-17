@@ -19,7 +19,7 @@ const CoreValue = ({ text, icon, color, delay, onClick }: CoreValueProps) => {
       mount={{ variant: "fadeRight", intensity: "extreme", delay: delay }}
     >
       <div
-        className="flex flex-col gap-8 items-center group cursor-pointer"
+        className="flex flex-col gap-8 items-center group cursor-pointer scale-60 sm:scale-70 lg:scale-80 xl:scale-90 2xl:scale-100 text-center"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={onClick}

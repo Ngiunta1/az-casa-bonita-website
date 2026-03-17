@@ -1,5 +1,4 @@
-import { motion, MotionValue, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { MotionValue } from "motion/react";
 
 interface CoreValueSectionProps {
   icon: React.ReactNode;
@@ -10,24 +9,7 @@ interface CoreValueSectionProps {
   motionValues?: { sm: MotionValue; md: MotionValue; lg: MotionValue };
 }
 
-const CoreValueSection = ({
-  icon,
-  title,
-  subTitle,
-  className,
-  index,
-  motionValues,
-}: CoreValueSectionProps) => {
-  const container = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [300, 0, -100]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 1]);
-
+const CoreValueSection = ({ icon, title, subTitle }: CoreValueSectionProps) => {
   return <CoreValueContent icon={icon} title={title} subTitle={subTitle} />;
 };
 
@@ -40,15 +22,6 @@ const CoreValueContent = ({
   title: string;
   subTitle: string;
 }) => {
-  const container = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
-
   return (
     <div className="flex w-full items-center justify-center gap-8 p-8">
       <div className="flex items-cetner justify-center w-56 h-56 p-10 bg-black/30 rounded-full">

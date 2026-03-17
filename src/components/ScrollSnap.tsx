@@ -1,4 +1,5 @@
 // ScrollSnap.tsx
+import { AnimatePresence } from "motion/react";
 import React, {
   forwardRef,
   useCallback,
@@ -8,6 +9,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
+import { Animate } from "./Animate";
 
 interface ScrollSnapProps {
   /** Optional total sections if you want guard rails; otherwise inferred at runtime */
@@ -32,7 +34,7 @@ const clamp = (n: number, min: number, max: number) =>
 const ScrollSnap = forwardRef<ScrollSnapHandle, ScrollSnapProps>(
   (
     { children, totalSections, scrollDuration = 1000, pauseDuration = 300 },
-    ref
+    ref,
   ) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [index, setIndex] = useState(0);
@@ -92,7 +94,7 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, ScrollSnapProps>(
 
         requestAnimationFrame(animate);
       },
-      [scrollDuration, easeInOutCubic]
+      [scrollDuration, easeInOutCubic],
     );
 
     // Snap to section with optional multi-section pause behavior
@@ -128,7 +130,7 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, ScrollSnapProps>(
           });
         }
       },
-      [index, sectionCount, animateScrollTo, pauseDuration]
+      [index, sectionCount, animateScrollTo, pauseDuration],
     );
 
     // Expose imperative API
@@ -140,7 +142,7 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, ScrollSnapProps>(
         prev: () => doSnap(index - 1),
         getIndex: () => index,
       }),
-      [doSnap, index]
+      [doSnap, index],
     );
 
     // Wheel and touch handling
@@ -257,6 +259,8 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, ScrollSnapProps>(
       };
     }, [computeIndex]);
 
+    const showFooter = index !== sectionCount - 2;
+
     return (
       <div
         ref={containerRef}
@@ -289,9 +293,27 @@ const ScrollSnap = forwardRef<ScrollSnapHandle, ScrollSnapProps>(
         tabIndex={0} // make the container focusable for keyboard control
       >
         {children}
+        <AnimatePresence>
+          {!showFooter && (
+            <Animate
+              mount={{ variant: "fadeBounce" }}
+              exit={{ variant: "fadeDown", duration: 0.6, ease: "easeOut" }}
+              className="fixed bottom-3 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-md flex items-center gap-2 z-40"
+            >
+              <span>Socials</span>
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Animate>
+          )}
+        </AnimatePresence>
       </div>
     );
-  }
+  },
 );
 
 ScrollSnap.displayName = "ScrollSnap";
