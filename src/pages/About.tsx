@@ -23,9 +23,12 @@ const About = () => {
     >
       <ScrollSnap ref={snapRef}>
         <Section className="h-full" deckIndex={0}>
-          <div className="flex flex-col w-full h-full justify-between items-center lg:p-20">
-            <WavyGlowText text="Making Your Casa Bonita" />
-            <div className="flex flex-wrap w-full justify-around gap-x-8 gap-y-0">
+          <div className="flex flex-col w-full h-full justify-start gap-10 pt-72 md:justify-center md:gap-16 md:pt-0 items-center lg:p-20">
+            <WavyGlowText
+              text="Making Your Casa Bonita"
+              fontSize="font-noto text-pretty tracking-tighter font-semibold text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
+            />
+            <div className="grid grid-cols-1 w-full justify-around gap-8 text-nowrap md:grid-cols-3">
               <CoreValue
                 text="Eco-Friendly"
                 color="#A8C090"

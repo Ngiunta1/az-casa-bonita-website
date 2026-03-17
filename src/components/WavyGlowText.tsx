@@ -6,7 +6,7 @@ interface WavyGlowTextProps {
   fontSize?: string;
 }
 
-const WavyGlowText = ({ text }: WavyGlowTextProps) => {
+const WavyGlowText = ({ text, fontSize }: WavyGlowTextProps) => {
   // Calculate gradient color for each character based on position
   const getGradientColor = (index: number, total: number) => {
     const colors = [
@@ -68,10 +68,9 @@ const WavyGlowText = ({ text }: WavyGlowTextProps) => {
               delay: delay,
             }}
           >
-            <Tagline
-              tagline={char === " " ? "\u00A0" : char}
-              style={{ color: `rgb(${rgb})` }}
-            />
+            <div className={fontSize} style={{ color: `rgb(${rgb})` }}>
+              {char === " " ? "\u00A0" : char}
+            </div>
           </motion.span>
         );
       })}

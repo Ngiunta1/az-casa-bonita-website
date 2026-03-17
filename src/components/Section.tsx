@@ -24,7 +24,7 @@ export default function Section({
       ([entry]) => {
         if (entry.isIntersecting) setActiveIndex(deckIndex);
       },
-      { threshold }
+      { threshold },
     );
 
     io.observe(el);
