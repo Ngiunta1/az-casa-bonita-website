@@ -9,7 +9,7 @@ import Section from "../components/Section";
 import Tagline from "../components/Tagline";
 
 const Contact = () => {
-  const phoneNumber = "+1 (602) 884-9751";
+  const phoneNumber = "+1 (480) 479-3481";
   const email = "AZCasaBonitaServices@gmail.com";
   const snapRef = useRef<ScrollSnapHandle>(null);
 

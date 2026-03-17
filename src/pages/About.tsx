@@ -23,7 +23,7 @@ const About = () => {
     >
       <ScrollSnap ref={snapRef}>
         <Section className="h-full" deckIndex={0}>
-          <div className="flex flex-col w-full h-full justify-evenly items-center lg:p-20">
+          <div className="flex flex-col w-full h-full justify-between items-center lg:p-20">
             <WavyGlowText text="Making Your Casa Bonita" />
             <div className="flex flex-wrap w-full justify-around gap-x-8 gap-y-0">
               <CoreValue

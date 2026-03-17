@@ -15,7 +15,7 @@ const Home = () => {
       <ScrollSnap>
         <Section deckIndex={0} className="h-full">
           <div className="flex h-full">
-            <div className="flex flex-col w-full justify-center gap-16 items-center lg:justify-between lg:flex-row lg:items-end lg:p-20">
+            <div className="flex flex-col w-full justify-end gap-16 items-center lg:justify-between lg:flex-row lg:items-end lg:p-20 mb-36 lg:mb-0">
               <Animate
                 mount={{ variant: "fadeUp" }}
                 hover={{ variant: "lift" }}
@@ -35,7 +35,7 @@ const Home = () => {
                 <Button
                   text="Book Now"
                   backgroundColor="primary"
-                  icon="src\assets\icons\go-arrow.png"
+                  icon="/icons/go-arrow.png"
                   onClick={() => navigate("/contact")}
                   data-animate="lift"
                 />
