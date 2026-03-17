@@ -11,7 +11,7 @@ const IconInfo = ({ icon, title, subTitle }: IconInfoProps) => {
     <section
       className="flex flex-col p-20 h-screen bg-cover bg-center"
       style={{
-        backgroundImage: "url(src/assets/images/eco-friendly-bg.png)",
+        backgroundImage: "url(/images/eco-friendly-bg.png)",
         backgroundColor: "rgba(0,0,0,0.3)",
         backgroundBlendMode: "color",
       }}

@@ -11,7 +11,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <Deck images={["src/assets/images/clean-living-room.png"]}>
+    <Deck images={["/images/clean-living-room.png"]}>
       <ScrollSnap>
         <Section deckIndex={0} className="h-full">
           <div className="flex h-full">

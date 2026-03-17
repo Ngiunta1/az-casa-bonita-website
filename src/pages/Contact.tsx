@@ -14,12 +14,7 @@ const Contact = () => {
   const snapRef = useRef<ScrollSnapHandle>(null);
 
   return (
-    <Deck
-      images={[
-        "src/assets/images/kitchen.png",
-        "src/assets/images/night-living-room.png",
-      ]}
-    >
+    <Deck images={["/images/kitchen.png", "/images/night-living-room.png"]}>
       <ScrollSnap ref={snapRef}>
         <Section
           className="flex h-screen w-full items-center justify-center lg:p-20"

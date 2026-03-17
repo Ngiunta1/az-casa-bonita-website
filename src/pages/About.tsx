@@ -15,10 +15,10 @@ const About = () => {
   return (
     <Deck
       images={[
-        "src/assets/images/sunset-living-room.png",
-        "src/assets/images/eco-friendly-bg.png",
-        "src/assets/images/care-and-compassion-bg.png",
-        "src/assets/images/excellence-bg.png",
+        "/images/sunset-living-room.png",
+        "/images/eco-friendly-bg.png",
+        "/images/care-and-compassion-bg.png",
+        "/images/excellence-bg.png",
       ]}
     >
       <ScrollSnap ref={snapRef}>

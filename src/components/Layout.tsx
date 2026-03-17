@@ -3,13 +3,13 @@ import Header from "./Header";
 import { useRef } from "react";
 
 const subPages = ["Home", "About", "Contact"];
-const logoSrc = "src/assets/images/az-casa-bonita-logo.png";
+const logoSrc = "/images/az-casa-bonita-logo.png";
 const title = "AZ Casa Bonita";
 
 // const backgrounds: Record<string, string> = {
-//   "/": "src/assets/images/clean-living-room.png",
-//   "/about": "src/assets/images/sunset-living-room.png",
-//   "/contact": "src/assets/images/kitchen.png",
+//   "/": "/images/clean-living-room.png",
+//   "/about": "/images/sunset-living-room.png",
+//   "/contact": "/images/kitchen.png",
 // };
 
 const Layout = () => {

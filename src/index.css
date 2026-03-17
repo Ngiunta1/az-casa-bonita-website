@@ -119,16 +119,16 @@ body {
 
 /* One class per route (use your actual image paths) */
 .bg--home {
-  background-image: url("src/assets/images/clean-living-room.png");
+  background-image: url("/images/clean-living-room.png");
 }
 .bg--about {
-  background-image: url("src/assets/images/sunset-living-room.png");
+  background-image: url("/images/sunset-living-room.png");
 }
 .bg--contact {
-  background-image: url("src/assets/images/kitchen.png");
+  background-image: url("/images/kitchen.png");
 }
 .bg--contact2 {
-  background-image: url("src/assets/images/night-living-room.png");
+  background-image: url("/images/night-living-room.png");
 }
 
 /* Route selectors flip the correct layer to active */
