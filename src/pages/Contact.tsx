@@ -17,22 +17,22 @@ const Contact = () => {
     <Deck images={["/images/kitchen.png", "/images/night-living-room.png"]}>
       <ScrollSnap ref={snapRef}>
         <Section
-          className="flex h-screen w-full items-center justify-center lg:p-20"
+          className="flex h-screen w-full items-center justify-center p-6 xl:p-10"
           deckIndex={0}
         >
           <div className="flex flex-col h-full items-center justify-center">
-            <div className="flex flex-1 items-center justify-center gap-12 p-2">
+            <div className="xl:flex-nowrap flex-wrap flex items-center justify-center gap-16 p-2 text-center">
               <Animate
                 mount={{ variant: "fadeUp" }}
                 hover={{ variant: "lift" }}
               >
                 <Tagline
                   tagline="Your Dream Clean Just a Call Away"
-                  className="text-white cursor-pointer"
+                  className="text-white cursor-pointer max-w-5xl"
                   onClick={() => (window.location.href = `tel:${phoneNumber}`)}
                 />
               </Animate>
-              <div className="flex flex-col gap-6 text-3xl">
+              <div className="flex flex-col gap-6 text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl">
                 <ContactButton
                   mainText="Phone Number"
                   subText={phoneNumber}
