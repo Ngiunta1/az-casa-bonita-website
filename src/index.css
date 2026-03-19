@@ -2,8 +2,6 @@
 
 body {
   @apply bg-black;
-  @apply perspective-[1px];
-  @apply transform-3d;
 }
 
 @import "tailwindcss";
