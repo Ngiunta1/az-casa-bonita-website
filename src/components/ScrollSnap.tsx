@@ -49,10 +49,6 @@ function useStableViewportHeight() {
     probe.style.position = "fixed";
     probe.style.visibility = "hidden";
     document.body.appendChild(probe);
-    const dvhSupported =
-      probe.offsetHeight > 0 && probe.offsetHeight !== window.innerHeight;
-    // Even if equal, dvh is still more correct — but we use it as a signal
-    const getDvhHeight = () => probe.offsetHeight;
     document.body.removeChild(probe);
 
     // Use visualViewport API if available (best for mobile)
