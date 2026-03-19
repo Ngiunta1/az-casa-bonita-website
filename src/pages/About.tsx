@@ -35,7 +35,7 @@ const About = () => {
                 icon={<BioLeaves fill="#A8C090" />}
                 delay={0}
                 onClick={() =>
-                  snapRef.current?.scrollTo(1, { duration: 400, pause: 100 })
+                  snapRef.current?.scrollTo(1, { duration: 200, pause: 0 })
                 }
               />
               <CoreValue
@@ -44,7 +44,7 @@ const About = () => {
                 icon={<HouseHands fill="#F28294" />}
                 delay={0.5}
                 onClick={() =>
-                  snapRef.current?.scrollTo(2, { duration: 400, pause: 100 })
+                  snapRef.current?.scrollTo(2, { duration: 200, pause: 0 })
                 }
               />
               <CoreValue
@@ -53,7 +53,7 @@ const About = () => {
                 icon={<GalaxyStar fill="#7DB3D9" />}
                 delay={1}
                 onClick={() =>
-                  snapRef.current?.scrollTo(3, { duration: 400, pause: 100 })
+                  snapRef.current?.scrollTo(3, { duration: 200, pause: 0 })
                 }
               />
             </div>

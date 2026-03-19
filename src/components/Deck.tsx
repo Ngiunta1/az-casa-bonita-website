@@ -30,7 +30,7 @@ export function Deck({
         {images.map((src, i) => (
           <div
             key={src}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]
                        ${activeIndex === i ? "opacity-100" : "opacity-0"}`}
             style={{ backgroundImage: `url(${src})` }}
           />

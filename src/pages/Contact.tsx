@@ -47,20 +47,8 @@ const Contact = () => {
                 />
               </div>
             </div>
-            {/* <Animate mount={{ variant: "fadeBounce", intensity: "extreme" }}>
-              <div className="flex flex-col gap-3 items-center">
-                <h1
-                  className="text-white font-semibold text-3xl tracking-tight"
-                  onClick={() => snapRef.current?.next()}
-                >
-                  Scroll Down For Scheduling
-                </h1>
-                <ChevronDown color="white" size={36} />
-              </div>
-            </Animate> */}
           </div>
         </Section>
-        {/* <Section deckIndex={1}></Section> */}
         <Footer />
       </ScrollSnap>
     </Deck>
