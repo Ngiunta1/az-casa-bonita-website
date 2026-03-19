@@ -18,7 +18,8 @@ export type AnimationVariant =
   | "glow"
   | "tilt"
   | "grow"
-  | "press";
+  | "press"
+  | "fadeBounce";
 
 export type TriggerType = "scroll" | "hover" | "tap" | "focus" | "mount";
 

@@ -1,12 +1,7 @@
-import { MotionValue } from "motion/react";
-
 interface CoreValueSectionProps {
   icon: React.ReactNode;
   title: string;
   subTitle: string;
-  index: number;
-  className?: string;
-  motionValues?: { sm: MotionValue; md: MotionValue; lg: MotionValue };
 }
 
 const CoreValueSection = ({ icon, title, subTitle }: CoreValueSectionProps) => {
@@ -24,7 +19,7 @@ const CoreValueContent = ({
 }) => {
   return (
     <div className="flex w-full items-center justify-center gap-8 p-8">
-      <div className="flex items-cetner justify-center w-56 h-56 p-10 bg-black/30 rounded-full">
+      <div className="flex items-center justify-center w-56 h-56 p-10 bg-black/30 rounded-full">
         {icon}
       </div>
       <div className="flex flex-col gap-20">

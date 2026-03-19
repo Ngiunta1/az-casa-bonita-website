@@ -13,7 +13,7 @@ const TitleLogo = ({ title, logoSrc }: TitleLogoProps) => {
       className="flex items-center justify-center gap-4 w-full flex-row hover:cursor-pointer lg:justify-start"
       onClick={() => navigate("/")}
     >
-      <img src={logoSrc} className="w-12" />
+      <img src={logoSrc} alt={title} className="w-12" />
       <Title title={title} />
     </div>
   );

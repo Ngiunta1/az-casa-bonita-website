@@ -19,7 +19,7 @@ const SOCIALS = [
     name: "Phone",
     style: "fa-solid fa-phone text-white text-xl",
     onClick: () => {
-      window.location.href = "tel:+1 (602) 884-9751";
+      window.location.href = "tel:+1 (480) 479-3481";
     },
   },
   {
@@ -38,7 +38,7 @@ const Footer = () => {
     >
       <div className={`flex place-content-start text-white gap-4`}>
         {SOCIALS.map((social, index) => (
-          <div className="flex items-center gap-4">
+          <div key={social.name} className="flex items-center gap-4">
             <Animate
               hover={{ variant: "lift", intensity: "subtle" }}
               className="cursor-pointer"

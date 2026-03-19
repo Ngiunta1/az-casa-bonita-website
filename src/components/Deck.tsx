@@ -26,11 +26,11 @@ export function Deck({
   return (
     <DeckContext.Provider value={value}>
       {/* Fixed full-viewport background under everything */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
+      <div className="fixed inset-0 -z-10 pointer-events-none pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]">
         {images.map((src, i) => (
           <div
             key={src}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)]
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500
                        ${activeIndex === i ? "opacity-100" : "opacity-0"}`}
             style={{ backgroundImage: `url(${src})` }}
           />

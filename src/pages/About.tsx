@@ -62,7 +62,7 @@ const About = () => {
         <Section className="h-full" deckIndex={1}>
           <div className="flex w-full h-full items-center justify-center gap-8 p-8">
             <div className="flex flex-col items-center gap-10">
-              <div className="flex items-cetner justify-center aspect-square w-40 p-7 lg:w-40 lg:p-7 xl:w-48 xl:p-10 2xl:w-56 2xl:p-12 bg-black/30 rounded-full">
+              <div className="flex items-center justify-center aspect-square w-40 p-7 lg:w-40 lg:p-7 xl:w-48 xl:p-10 2xl:w-56 2xl:p-12 bg-black/30 rounded-full">
                 <BioLeaves fill="#A8C090" />
               </div>
               <h1 className="text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-6xl font-bold text-center drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]">
@@ -78,7 +78,7 @@ const About = () => {
         <Section className="h-full" deckIndex={2}>
           <div className="flex w-full h-full items-center justify-center gap-8 p-8">
             <div className="flex flex-col items-center gap-20">
-              <div className="flex items-cetner justify-center aspect-square w-40 p-7 lg:w-40 lg:p-7 xl:w-48 xl:p-10 2xl:w-56 2xl:p-12 bg-black/30 rounded-full">
+              <div className="flex items-center justify-center aspect-square w-40 p-7 lg:w-40 lg:p-7 xl:w-48 xl:p-10 2xl:w-56 2xl:p-12 bg-black/30 rounded-full">
                 <HouseHands fill="#F28294" />
               </div>
               <h1 className="text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-6xl font-bold text-center drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]">
@@ -94,7 +94,7 @@ const About = () => {
         <Section className="h-full" deckIndex={3}>
           <div className="flex w-full h-full items-center justify-center gap-8 p-8">
             <div className="flex flex-col items-center gap-20">
-              <div className="flex items-cetner justify-center aspect-square w-40 p-7 lg:w-40 lg:p-7 xl:w-48 xl:p-10 2xl:w-56 2xl:p-12 bg-black/30 rounded-full">
+              <div className="flex items-center justify-center aspect-square w-40 p-7 lg:w-40 lg:p-7 xl:w-48 xl:p-10 2xl:w-56 2xl:p-12 bg-black/30 rounded-full">
                 <GalaxyStar fill="#7DB3D9" />
               </div>
               <h1 className="text-white text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-6xl font-bold text-center drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]">

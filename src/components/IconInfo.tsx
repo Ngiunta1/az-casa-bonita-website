@@ -17,7 +17,7 @@ const IconInfo = ({ icon, title, subTitle }: IconInfoProps) => {
       }}
     >
       <div className="flex gap-8 items-center">
-        <div className="flex items-cetner justify-center w-56 h-56 bg-black/30 rounded-full">
+        <div className="flex items-center justify-center w-56 h-56 bg-black/30 rounded-full">
           <BioLeaves fill="#A8C090" className="w-32 h-32 m-12" />
           {icon}
         </div>
