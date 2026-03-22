@@ -28,7 +28,7 @@ const About = () => {
               text="Making Your Casa Bonita"
               fontSize="font-noto text-pretty tracking-tighter font-semibold text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl"
             />
-            <div className="grid grid-cols-1 w-full justify-around gap-4 text-nowrap sm:grid-cols-3">
+            <div className="grid grid-cols-3 w-full justify-around gap-2 sm:gap-4">
               <CoreValue
                 text="Eco-Friendly"
                 color="#A8C090"

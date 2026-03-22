@@ -4,10 +4,15 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 body {
   @apply bg-black;
+}
+
+#root {
+  height: 100%;
 }
 
 @import "tailwindcss";

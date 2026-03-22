@@ -24,7 +24,7 @@ export function BgProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <BgLayerContext.Provider value={{ setActiveSrc }}>
-      <div className="fixed inset-0 -z-10 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 h-[100lvh] -z-10 pointer-events-none">
         {srcs.map((src) => (
           <motion.div
             key={src}
