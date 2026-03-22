@@ -48,7 +48,7 @@ const WavyGlowText = ({ text, fontSize }: WavyGlowTextProps) => {
           <motion.span
             key={i}
             initial={{
-              opacity: 1,
+              opacity: 0,
               y: 0,
               filter: `drop-shadow(0 0 0px rgba(${rgb}, 0))`,
             }}

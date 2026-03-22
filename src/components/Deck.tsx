@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useBgLayer } from "./BgLayer";
 
 type DeckCtx = {
   activeIndex: number;
@@ -20,24 +21,18 @@ export function Deck({
   children: React.ReactNode;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { setActiveSrc } = useBgLayer();
+
+  useEffect(() => {
+    if (images[activeIndex]) {
+      setActiveSrc(images[activeIndex]);
+    }
+  }, [activeIndex, images, setActiveSrc]);
 
   const value = useMemo(() => ({ activeIndex, setActiveIndex }), [activeIndex]);
 
   return (
     <DeckContext.Provider value={value}>
-      {/* Fixed full-viewport background under everything */}
-      <div className="fixed top-0 left-0 w-dvw h-dvh -z-10 pointer-events-none">
-        {images.map((src, i) => (
-          <div
-            key={src}
-            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500
-                       ${activeIndex === i ? "opacity-100" : "opacity-0"}`}
-            style={{ backgroundImage: `url(${src})` }}
-          />
-        ))}
-      </div>
-
-      {/* App/content scrolls above the fixed deck */}
       {children}
     </DeckContext.Provider>
   );

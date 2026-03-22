@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import { BgProvider } from "./BgLayer";
 import Header from "./Header";
 
 const subPages = ["Home", "About", "Contact"];
@@ -7,10 +8,14 @@ const title = "AZ Casa Bonita";
 
 const Layout = () => {
   return (
-    <div className="relative h-dvh overflow-hidden flex flex-col">
-      <Header subPages={subPages} logoSrc={logoSrc} title={title} />
-      <Outlet />
-    </div>
+    <BgProvider>
+      <div className="relative h-dvh overflow-hidden flex flex-col">
+        <Header subPages={subPages} logoSrc={logoSrc} title={title} />
+        <div className="flex-1 overflow-hidden">
+          <Outlet />
+        </div>
+      </div>
+    </BgProvider>
   );
 };
 
