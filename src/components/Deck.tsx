@@ -26,7 +26,7 @@ export function Deck({
   return (
     <DeckContext.Provider value={value}>
       {/* Fixed full-viewport background under everything */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
+      <div className="fixed top-0 left-0 w-dvw h-dvh -z-10 pointer-events-none">
         {images.map((src, i) => (
           <div
             key={src}
